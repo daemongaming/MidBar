@@ -1,0 +1,74 @@
+{
+    "LA CUCARACHA": {
+        "owner": "Kraken",
+        "color": "#26FF00",
+        "opener": "Yooo! The raddest roach is in da hooouse! What can I getcha, boss?",
+		"chaos": 10,
+		"days": [0,1,0,1,1,1,0],
+		"hours": [16,20]
+    },
+    "Last Call": {
+        "owner": "Unknown",
+        "color": "#FF00CD",
+        "opener": "Welcome on in -- what would you like to drink? We can make anything!",
+		"chaos": 2,
+		"days": [0,0,0,0,1,0,0],
+		"hours": [20,22]
+    },
+    "CY-BAR": {
+        "owner": "HankCoca",
+        "color": "#005FFF",
+        "opener": "Welcome to CY-BAR! What can we get for you today?",
+		"chaos": 5,
+		"days": [1,0,1,0,1,1,1],
+		"hours": [12,22]
+    },
+    "Kali's Clubhouse": {
+        "owner": "LordKaliYuga",
+        "color": "#F69C0C",
+        "opener": "Honor - Loyalty - Respect - Honesty... all features that embody a true gentleman. Welcome to Kali's Clubhouse!",
+		"chaos": 7,
+		"days": [0,0,0,1,1,1,1],
+		"hours": [17,19]
+    },
+    "Kitsune Dive": {
+        "owner": "Kitsune",
+        "color": "#FF0066",
+        "opener": "Come on in... we've got plenty of fine spirits for you to enjoy. Which would you like?",
+		"chaos": 3,
+		"days": [0,0,0,0,0,1,0],
+		"hours": [20,23]
+    },
+    "The OBSIDIAN Night Bar": {
+        "owner": "OBISIDIAN-KING",
+        "color": "#A30000",
+        "opener": "IT'S YOUR FAVORITE BOUNCER, FOR THE BEST BARS!! WHAT DO YA WANT?!",
+		"chaos": 4,
+		"days": [1,1,1,1,1,1,1],
+		"hours": [14,23]
+    },
+    "The Dark Hour": {
+        "owner": "Gecko",
+        "color": "#00008A",
+        "opener": "Hey there. What would you like to drink today?",
+		"chaos": 6,
+		"days": [1,1,1,1,1,1,1],
+		"hours": [0,4]
+    },
+    "The Toilet Flush": {
+        "owner": "BitchKing",
+        "color": "#FFD500",
+        "opener": "I've got some brain damage, but I'll try my best not to put anything in your drink. What is your desire, my little friend? Teehee!",
+		"chaos": 9,
+		"days": [0,0,0,0,0,1,1],
+		"hours": [13,23]
+    },
+    "Scorch'd Spirits": {
+        "owner": "AKay74u",
+        "color": "#00C420",
+        "opener": "Rise, my spirit! Speak the name of the potion you wish to imbibe, and it will appear before you...",
+		"chaos": 8,
+		"days": [0,1,0,1,1,1,0],
+		"hours": [16,22]
+    }
+}
