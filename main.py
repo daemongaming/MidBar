@@ -14,19 +14,45 @@ def load_json(filename):
             return json.load(f)
     except Exception:
         return None
+        
+# --- PATRON (USER) CLASS ---
+
+class Patron():
     
-# --- MAIN FUNCTION ---
+    def __init__(self):
+        self.name = "patron"
+        self.avatar = "robot"
+        self.height = 150
+        self.drunk = 0
+    
+    def add_drunk(self, karm):
+        self.drunk += karm
+        self.blackout_check()
+        
+    def blackout_check(self):
+        blackout = self.height / 15 < self.drunk
+        if blackout:
+            print("\nYour vision starts to become fuzzy, and you black out!")
+            print("\nYou awaken in a dark alley. A pair of poorly made shoes sits in the corner.")
+            print("\nGetting yourself up to your feet, you make your way back into the bar -- for more drinks, perhaps?")
+            self.drunk = 0
+    
+# --- MAIN CLASS ---
 
 class Main():
     
     # --- INITIALIZATION ---
     
     def __init__(self):
+        
+        # Set up
+        self.patron = Patron()
         self.bars = load_json(os.path.join(DATA_DIR, "bars.json"))
         self.drinks = load_json(os.path.join(DATA_DIR, "drinks.json"))
         self.commands = ["order", "drink", "look"]
         self.quits = ["quit", "exit", "leave", "bye", "goodbye", "gtfo"]
         self.drinks_on_bar = []
+        
         # Startup welcome text
         self.bar_names = list(self.bars.keys())
         self.bars_open = []
@@ -46,11 +72,13 @@ class Main():
             current_week_day = datetime.now().strftime("%A")
             today_index = days_of_week.get(current_week_day)
             current_hour = datetime.now().hour
-            bar_open = days[today_index] and current_hour in range(hours[0], hours[1])
+            bar_open = days[today_index] and current_hour in range(hours[0], hours[1]+1)
             if bar_open:
                 bars_open_count += 1
                 self.bars_open.append(bar)
                 print(f"  {bars_open_count}.) {bar}")
+        
+        # Choose a bar to visit
         print("\nWhat bar would you like to visit?\n\nEnter bar name: ")
         self.bar_choice = input().strip()
         self.playing = True
@@ -64,6 +92,7 @@ class Main():
             else:
                 print(f"\nNo bar named \"{self.bar_choice}\" could be found! :( Please try again.\n\nEnter bar name: ")
                 self.bar_choice = input().strip()
+                
         # Game loop (play)
         while self.playing:
             cmd = input().strip()
@@ -71,6 +100,8 @@ class Main():
             cmd_part_1 = command_parts[0].lower()
             if cmd_part_1 in self.commands:
                 self.do_command(cmd)
+                if self.patron.drunk > 0:
+                    self.patron.add_drunk(-1)
             elif cmd_part_1 in self.quits:
                 self.playing = False
             else:
@@ -83,20 +114,20 @@ class Main():
         cmd_part_1 = command_parts[0].lower()
         ids = self.get_drinks_ids()
         if len(command_parts) > 1:
-            drink_name = command_parts[1].lower()
+            drink_name = command_parts[1]
             if len(command_parts) > 2:
                 drink_id_count = 0
                 for part in command_parts:
                     if drink_id_count > 1:
-                        drink_name = drink_name + " " + part.lower()
+                        drink_name = drink_name + " " + part
                     drink_id_count += 1
             if cmd_part_1 == "order":
-                if drink_name in ids:
+                if drink_name.lower() in ids:
                     self.serve(drink_name)
                 else:
                     print(f"\n\"Sorry, I don't recognize '{drink_name}'...\"")
             elif cmd_part_1 == "drink":
-                if drink_name in ids:
+                if drink_name.lower() in ids:
                     self.drink(drink_name)
                 else:
                     print(f"\n\"Sorry, I don't recognize '{drink_name}'...\"")
@@ -108,7 +139,7 @@ class Main():
         elif cmd_part_1 in self.quits:
             self.playing = False
         else:
-            if cmd_part_1 in ids:
+            if cmd_part_1.lower() in ids:
                 self.drink(drink_name)
             elif cmd_part_1 == "look":
                 print(f"\nDrinks currently served on the bar: \n")
@@ -135,6 +166,8 @@ class Main():
         if drink_upper in self.drinks_on_bar:
             self.drinks_on_bar.remove(drink_upper)
             print(f"\nYou drink the {drink_upper}, and you feel drunker!")
+            karm = self.drinks.get(drink_name).get("karm")[1]
+            self.patron.add_drunk(karm)
         else:
             print(f"\nThere is no {drink_upper} served!")
     

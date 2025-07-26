@@ -4,11 +4,19 @@
         "color": "#26FF00",
         "opener": "Yooo! The raddest roach is in da hooouse! What can I getcha, boss?",
 		"chaos": 10,
+		"days": [1,1,1,1,1,1,0],
+		"hours": [0,23]
+    },
+    "Scorch'd Spirits": {
+        "owner": "AKay74u",
+        "color": "#00C420",
+        "opener": "Rise, my spirit! Speak the name of the potion you wish to imbibe, and it will appear before you...",
+		"chaos": 8,
 		"days": [0,1,0,1,1,1,0],
-		"hours": [16,20]
+		"hours": [16,22]
     },
     "Last Call": {
-        "owner": "Unknown",
+        "owner": "BlankPxl",
         "color": "#FF00CD",
         "opener": "Welcome on in -- what would you like to drink? We can make anything!",
 		"chaos": 2,
@@ -55,6 +63,14 @@
 		"days": [1,1,1,1,1,1,1],
 		"hours": [0,4]
     },
+    "Cherry Pop": {
+        "owner": "Unknown",
+        "color": "#FF006C",
+        "opener": "Hey there, hot stuff -- what can I get for you tonight, huh?",
+		"chaos": 4,
+		"days": [1,0,0,0,0,0,1],
+		"hours": [2,6]
+    },
     "The Toilet Flush": {
         "owner": "BitchKing",
         "color": "#FFD500",
@@ -62,13 +78,5 @@
 		"chaos": 9,
 		"days": [0,0,0,0,0,1,1],
 		"hours": [13,23]
-    },
-    "Scorch'd Spirits": {
-        "owner": "AKay74u",
-        "color": "#00C420",
-        "opener": "Rise, my spirit! Speak the name of the potion you wish to imbibe, and it will appear before you...",
-		"chaos": 8,
-		"days": [0,1,0,1,1,1,0],
-		"hours": [16,22]
     }
 }
